@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://valenteevents.com"),
@@ -56,8 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Valente Events",
-    description:
-      "Luxury Event Management Company in Kerala.",
+    description: "Luxury Event Management Company in Kerala.",
     images: ["/logo.png"],
   },
 };
@@ -92,8 +92,12 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
+
         {children}
+        
+        <GoogleAnalytics gaId="G-HTYKLR2CMZ" />
       </body>
+
     </html>
   );
 }
