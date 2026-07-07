@@ -94,10 +94,11 @@ export default function RootLayout({
         />
 
         {children}
-        
-        <GoogleAnalytics gaId="G-HTYKLR2CMZ" />
+
+        <GoogleAnalytics gaId="G-0728FNCV88" />
       </body>
 
     </html>
   );
 }
+
