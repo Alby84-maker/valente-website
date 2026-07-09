@@ -1,30 +1,26 @@
 "use client";
 
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Services from "./components/Services";
-import WhyChooseUs from "./components/WhyChooseUs";
-import Gallery from "./components/Gallery";
-import Footer from "./components/Footer";
+import Navbar from "./components/layout/Navbar";
+import Hero from "./components/home/Hero";
+import Services from "./components/home/Services";
+import WhyChooseUs from "./components/home/WhyChooseUs";
+import Gallery from "./components/home/Gallery";
+import Footer from "./components/layout/Footer";
 
 export default function Home() {
   return (
-    <main className="relative bg-black text-white">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0b0b0b] via-black to-[#120600]" />
+    <main className="bg-white text-gray-900 transition-colors duration-300 dark:bg-black dark:text-white">
+      <Navbar />
 
-      {/* Orange Glow */}
-      <div className="absolute left-1/2 top-[35%] h-72 w-72 -translate-x-1/2 rounded-full bg-orange-500 opacity-20 blur-[120px]" />
+      <Hero />
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <Services />
-        <WhyChooseUs />
-        <Gallery />
-        <Footer />
-      </div>
+      <Services />
+
+      <WhyChooseUs />
+
+      <Gallery />
+
+      <Footer />
     </main>
   );
 }

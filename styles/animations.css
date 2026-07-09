@@ -1,0 +1,51 @@
+.fade-up{
+    animation:fadeUp .6s ease both;
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.hover-lift{
+
+transition:.3s;
+
+}
+
+.hover-lift:hover{
+
+transform:translateY(-6px);
+
+}
+
+.glass{
+
+backdrop-filter:blur(18px);
+
+background:rgba(255,255,255,.75);
+
+border:1px solid rgba(255,255,255,.3);
+
+}
+
+.dark .glass{
+
+background:rgba(15,23,42,.7);
+
+border:1px solid rgba(255,255,255,.08);
+
+}

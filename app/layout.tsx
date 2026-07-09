@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../styles/animations.css";
+
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://valenteevents.com"),
@@ -84,21 +87,26 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
-        />
+        <ThemeProvider
+  attribute="class"
+  defaultTheme="light"
+  enableSystem={false}
+  disableTransitionOnChange
+>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(structuredData),
+            }}
+          />
 
-        {children}
+          {children}
+        </ThemeProvider>
 
         <GoogleAnalytics gaId="G-0728FNCV88" />
       </body>
-
     </html>
   );
 }
-
