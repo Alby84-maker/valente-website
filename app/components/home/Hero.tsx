@@ -1,112 +1,81 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative bg-white">
 
-      {/* Soft Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-white" />
+      <div className="mx-auto flex min-h-screen max-w-7xl items-center px-6 py-16 lg:px-8 lg:py-20">
 
-      {/* Very Light Background Glow */}
-      <div className="absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-orange-100 opacity-10 blur-[180px]" />
+        <div className="grid w-full items-center gap-28 lg:grid-cols-2">
 
-      <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col-reverse items-center justify-center gap-12 px-6 py-24 lg:flex-row">
+          {/* LEFT */}
+          <div className="max-w-xl">
 
-        {/* LEFT */}
-        <div className="w-full lg:w-[46%] text-center lg:text-left">
+            <p className="mb-5 text-sm font-medium uppercase tracking-[0.35em] text-orange-600">
+              ValenteEvents
+            </p>
 
-          <span className="inline-block rounded-full border border-orange-200 bg-orange-50 px-6 py-2 text-sm font-semibold uppercase tracking-[0.3em] text-orange-600">
-            Luxury Event Management
-          </span>
+            <h1 className="text-5xl font-black leading-[1.05] tracking-tight text-neutral-900 lg:text-6xl xl:text-7xl">
 
-          <h1 className="mt-8 text-5xl font-extrabold leading-[1.05] text-gray-900 md:text-7xl xl:text-8xl">
-            Creating
+              Crafting
 
-            <span className="block text-orange-500">
-              Extraordinary
-            </span>
+              <span className="block">
+                Extraordinary
+              </span>
 
-            Moments
-          </h1>
+              <span className="block text-orange-600">
+                Celebrations.
+              </span>
 
-          <p className="mx-auto mt-8 max-w-xl text-lg leading-8 text-gray-600 lg:mx-0">
-            Weddings, corporate events, birthdays, luxury celebrations and
-            unforgettable experiences crafted with elegance across Kerala.
-          </p>
+            </h1>
 
-          {/* Buttons */}
-          <div className="mt-10 flex flex-col justify-center gap-5 sm:flex-row lg:justify-start">
+            <p className="mt-8 text-lg leading-9 text-neutral-600">
 
-            <Link
-              href="/plan-your-event"
-              className="rounded-full bg-orange-500 px-9 py-4 font-semibold text-white transition duration-300 hover:scale-105 hover:bg-orange-600"
-            >
-              Plan Your Event →
-            </Link>
+              Luxury weddings, destination celebrations,
+              corporate events and unforgettable experiences
+              designed with elegance, precision and timeless
+              attention to detail.
 
-            <Link
-              href="#services"
-              className="rounded-full border border-orange-300 px-9 py-4 font-semibold text-orange-600 transition duration-300 hover:bg-orange-50"
-            >
-              Explore Services
-            </Link>
+            </p>
 
-          </div>
+            <div className="mt-12 flex items-center gap-8">
 
-          {/* Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-8">
+              <Link
+                href="/plan-your-event"
+                className="rounded-full bg-orange-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-700"
+              >
+                Plan Your Event
+              </Link>
 
-            <div>
-              <h3 className="text-3xl font-bold text-orange-500">
-                Premium
-              </h3>
-              <p className="mt-2 text-gray-500">
-                Experience
-              </p>
-            </div>
+              <Link
+                href="#services"
+                className="font-medium text-neutral-700 transition-colors duration-300 hover:text-orange-600"
+              >
+                Explore Services →
+              </Link>
 
-            <div>
-              <h3 className="text-3xl font-bold text-orange-500">
-                Kerala
-              </h3>
-              <p className="mt-2 text-gray-500">
-                Based
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold text-orange-500">
-                100%
-              </h3>
-              <p className="mt-2 text-gray-500">
-                Client Focus
-              </p>
             </div>
 
           </div>
 
-        </div>
+          {/* RIGHT */}
 
-        {/* RIGHT */}
-        <div className="flex w-full justify-center lg:w-[54%]">
+          <div className="relative">
 
-          <div className="relative flex items-center justify-center">
+            <div className="relative h-[720px] overflow-hidden rounded-[40px] shadow-2xl">
 
-            {/* Premium White Glow */}
-            <div
-              className="absolute h-[430px] w-[430px] rounded-full"
-              style={{
-                boxShadow: "0 0 140px rgba(249,115,22,0.12)",
-              }}
-            />
+              <Image
+                src="/hero.png"
+                alt="Luxury Wedding by ValenteEvents"
+                fill
+                priority
+                className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+              />
 
-            <img
-              src="/logo.png"
-              alt="Valente Events"
-              className="relative w-[24rem] drop-shadow-2xl transition duration-700 hover:scale-105 lg:w-[650px]"
-            />
+            </div>
 
           </div>
 
