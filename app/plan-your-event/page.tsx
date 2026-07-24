@@ -34,6 +34,10 @@ export default function PlanYourEvent() {
   const [email, setEmail] = useState("");
   const [contactMethod, setContactMethod] = useState("");
 
+  // Submission
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   // Auto-advance from Step 1
   const handleEventSelect = (event: string) => {
     setSelectedEvent(event);
@@ -41,6 +45,47 @@ export default function PlanYourEvent() {
     setTimeout(() => {
       setStep(2);
     }, 250);
+  };
+
+  const handleSubmit = async () => {
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          selectedEvent,
+          eventDate,
+          location,
+          guests,
+          venue,
+          services,
+          vision,
+          name,
+          phone,
+          email,
+          contactMethod,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setIsSubmitted(true);
+
+      alert("🎉 Your enquiry has been sent successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Sorry! Something went wrong while sending your enquiry.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -90,7 +135,6 @@ export default function PlanYourEvent() {
                 />
               </div>
 
-              {/* Step 1 */}
               {step === 1 && (
                 <Step1
                   selected={selectedEvent}
@@ -98,7 +142,6 @@ export default function PlanYourEvent() {
                 />
               )}
 
-              {/* Step 2 */}
               {step === 2 && (
                 <Step2
                   eventDate={eventDate}
@@ -112,7 +155,6 @@ export default function PlanYourEvent() {
                 />
               )}
 
-              {/* Step 3 */}
               {step === 3 && (
                 <Step3
                   services={services}
@@ -120,7 +162,6 @@ export default function PlanYourEvent() {
                 />
               )}
 
-              {/* Step 4 */}
               {step === 4 && (
                 <Step4
                   vision={vision}
@@ -128,7 +169,6 @@ export default function PlanYourEvent() {
                 />
               )}
 
-              {/* Step 5 */}
               {step === 5 && (
                 <Step5
                   name={name}
@@ -142,7 +182,6 @@ export default function PlanYourEvent() {
                 />
               )}
 
-              {/* Navigation */}
               {step !== 1 && (
                 <div className="mt-16 flex justify-between">
 
@@ -158,17 +197,17 @@ export default function PlanYourEvent() {
                       if (step < 5) {
                         setStep(step + 1);
                       } else {
-                        alert("Event request submitted!");
+                        handleSubmit();
                       }
                     }}
                     disabled={
+                      isSubmitting ||
                       (step === 2 &&
                         (!eventDate ||
                           !location ||
                           !guests ||
                           !venue)) ||
                       (step === 3 && services.length === 0) ||
-                      (step === 4 && vision.trim() === "") ||
                       (step === 5 &&
                         (!name ||
                           !phone ||
@@ -178,7 +217,9 @@ export default function PlanYourEvent() {
                     className="rounded-xl bg-orange-500 px-8 py-3 text-white transition hover:bg-orange-600 disabled:opacity-40"
                   >
                     {step === 5
-                      ? "✨ Request My Proposal"
+                      ? isSubmitting
+                        ? "Sending..."
+                        : "✨ Request My Proposal"
                       : "Continue"}
                   </button>
 
