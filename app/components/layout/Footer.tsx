@@ -12,8 +12,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
 
         <h3 className="text-3xl font-bold text-white">
-          Valente Events
-        </h3>
+  ValenteEvents
+</h3>
 
         <p className="text-gray-400 mt-2 mb-10">
           Where Every Moment Matters
@@ -64,11 +64,29 @@ export default function Footer() {
 
         </div>
 
-        <div className="mt-12 border-t border-white/10 w-full pt-6">
-          <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Valente Events. All Rights Reserved.
-          </p>
-        </div>
+        <div className="mt-12 border-t border-white/10 w-full pt-8 text-center space-y-2">
+
+  <p className="text-sm text-gray-300 font-semibold">
+    ValenteEvents
+  </p>
+
+  <p className="text-xs text-gray-500">
+    VALENTEEVENTS PRIVATE LIMITED
+  </p>
+
+  <p className="text-xs text-gray-500">
+    CIN: U82300KL2026PTC104975
+  </p>
+
+  <p className="text-xs text-gray-500">
+    Kerala, India
+  </p>
+
+  <p className="text-xs text-gray-600 pt-3">
+    © {new Date().getFullYear()} ValenteEvents. All Rights Reserved.
+  </p>
+
+</div>
 
       </div>
     </footer>
